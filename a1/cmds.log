@@ -1,0 +1,59 @@
+CMDS LOG - The
+ a1 Assignment Console Inputs. See a1.txt for outputs
+SECTION A
+1.) Make a directory "a1" in your cs131 repo and change to it
+ls
+cd cs131
+mkdir a1
+cd a1
+vim a1.txt
+vim cmds.log
+
+2.) What is your home directory path?
+ls
+pwd
+
+3.) What is your UID(User ID)? What group(s) do you belong? How do you find out?
+id
+
+4.) Using only "ls" (and maybe "grep"), can you find out which file under directory /proc/ contains information about memory (mem) on your server? Which file contains information about CPU's on your server?
+
+ls /proc/
+ls /proc/ | grep mem
+ls /proc/ | grep cpu (note:finding files that match mem or cpu)
+
+5.) Use head to check the memory information file you found above. How much total memort is on your server?
+
+head /proc/meminfo
+cat /proc/meminfo (note:curious  what else was here)
+
+6.) Then use head, tail, cat to check the cpu information file you found above. How many processors are on your server? What is the processor architecture name? What is the processor speed in GHz?
+
+cat /proc/cpuinfo
+
+7.) Identify the operating system version. Which file under /etc/ contains this information?
+
+ls /ect/
+ls /ect/os-release
+
+SECTION B
+copied the taxi dataset and opened with (from in class exercise 1):
+cp /datasets/taxidata.tar.gz .
+ls
+cd taxidata
+ls (note:check to see how the name of the .csv files)
+head 2019-01.csv (note:checked to see how the data is formatted in the csv files for the first few entries)
+
+8.) Compute the average amount (use the total amount column) paid by customers who were picked up on May 12, 2019 (2019-05-12)
+grep '2019-05-12' 2019-05.csv | head -n 5 (note:check just the May 12th entries and headers to filter data)
+grep '2019-05-12' 2019-05.csv | awk -F, '{sum += $17; count++} END {print sum/count}' (note:using awk to parse thorugh csv and -F to deliiminate by ','. total sum = 17thcolumn. and keep a count so we can calc the average. Execute after all lines parsed and print the average)
+
+9) What was the highest total amount paid by customers who were picked up on May 12, 2019 (2019-05-12)?
+grep '2019-05-12' 2019-05.csv | awk -F, '{if ($17 > max) max=$17} END {print max}' (note: filter by May 12. parsethrough csv, and assign max, the bigger number replacing max as it parses though. print max)
+
+grep '460.04' 2019-05.csv (double check 460.04 is in the file and is the max)
+
+10) Among the rides with three or more customers, identify the 10 most popular dropoff locations in the month of May 2019.
+grep '2019-05' 2019-05.csv | awk -F, '$4 >= 3 {dropoff[$9]++} END {for (loc in dropoff) print dropoff[loc], loc}' | sort -nr | head -10
+(note: filter files from May and parse through the May file and deliminate by ','. Check the 4th column to see if there are more than 3 passengers. Count the number of drop offs in the 9th column and print all the drop-offs. Sort from high to low and print the top 10 results per the assignment.
+

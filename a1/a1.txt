@@ -1,0 +1,52 @@
+SECTION A
+1.) Make a directory "a1" in your cs131 repo and change to it
+Output: directory under cs131  called "a1"
+a1.txt  cmds.log
+2.) What is your home directory path? How did you find out?
+Output:  /mnt/scratch/mayasu24/cs131/a1
+From inside of a1 directory printed the working directory using "pwd" to see entire path from home root directory.
+3.)What is your UID? To what groups do you belong? How did you find that out?
+Output:
+uid=1270(mayasu24) gid=1271(mayasu24) groups=1271(mayasu24)
+Used the "id" command to get user and group id #'s.
+4.)Using only "ls" (and maybe grep), can you find out which file under direcory /proc/ contains information about memory(mem) on yor server? Which file contains information about the CPU's on your server?
+Output: <there are all the files listed related to the systems hardware>For the ones we care about specifically for memory is:"meminfo". Specifically ones for CPU:"cpuinfo"
+5.)Use head to check the memort information file you found above. How much total memory is on your server?
+Output: The first 5 lines
+MemTotal:       73080640 kB
+MemFree:        21942656 kB
+MemAvailable:   45381888 kB
+Buffers:         1121280 kB
+Cached:         22662400 kB
+There is 73080640 kB of total memory in my server.
+6.) Use head, tail, cat, to check the cpu information file you found above. How many processors are on your server? What is the processor architecture name? What is the processor speed in GHz?
+There are processors from (0-255) so 256 processors total. Architecture name is POWER8 (architected), altivec supported. The processor speed is 3.425GHz.
+Example of processor 255 :
+processor       : 255
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+7.) Identify the operating system version. Which file under /etc/ contains this information?
+The version is 8.6 (Ootpa) which is under this directory below using this command for example.
+cat /etc/os-release
+NAME="Red Hat Enterprise Linux"
+VERSION="8.6 (Ootpa)"
+8.) Compute the average amount (use the total amount column) paid by customers who were picked up on May 12, 2019 (2019-05-12)
+18.6652
+(note: calculated by filtering values in 17th column(total sum) in 2019-05 with lines that contain '2019-05-12' using grep. sum the values in column and keep count to calc average)
+
+9.)What was the highest total amount paid by customers who were picked up on May 12, 2019 (2019-05-12)?
+460.04
+(note: calc by filtering May 12 data. parse through and replace variable max with bigger number compared to value versus the variable max on iteration. print the max value)
+
+10.)Among the rides with three or more customers, identify the 10 most popular dropoff locations in the month of May 2019.
+39908 236.0
+37139 237.0
+36990 161.0
+33677 230.0
+28503 170.0
+27894 162.0
+27484 48.0
+26782 142.0
+25049 239.0
+24609 234.0
+
