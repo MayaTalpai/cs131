@@ -55,6 +55,9 @@ OUTPUT:
 "2019-03-12 23:43:22.000000"
 266324
 
+(NOTE HOW TO DO WITH REGEX, BUT DONT LIKE BECAUSE COMPLICATED) 
+grep -E '^[^,]*,[^,]*,"2019-03-12"'
+(starting at the 3rd column, esentailly) 
 
 2.) Sort the pickup location IDs in order to find the most popular pickup locations in January 2019. Identify the top 3 locations.
 cut -d, -f8 2019-01.csv | sort -n | uniq -c | sort -nr | head -3
