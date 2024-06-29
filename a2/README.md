@@ -25,16 +25,26 @@ I can use this command to get some preprogrammed responses that I might find amu
 
 
 4.) Examples (copy/paste results) - I copied pasted from the chat.log (but also all of this is also echoed into the teminal real time) 
-Fri Jun 28 00:01:33 EDT 2024 - Maya : hello
-Fri Jun 28 00:01:33 EDT 2024 - ROBO-MAYA: Hello, Maya! How are you today?
-Fri Jun 28 00:01:44 EDT 2024 - Maya : goodbye
-Fri Jun 28 00:01:44 EDT 2024 - ROBO-MAYA: Bye, Maya. Hope to Talk soon
-Fri Jun 28 00:02:07 EDT 2024 - Maya : whats todays date?
-Fri Jun 28 00:02:07 EDT 2024 - ROBO-MAYA: The current date is Fri Jun 28 00:02:07 EDT 2024
-Fri Jun 28 00:02:30 EDT 2024 - Maya : who am i?
-Fri Jun 28 00:02:31 EDT 2024 - ROBO-MAYA: mayasu24
-Fri Jun 28 00:02:52 EDT 2024 - Maya : whats the weather?
-Fri Jun 28 00:02:52 EDT 2024 - ROBO-MAYA: Weather report:
+>Fri Jun 28 00:01:33 EDT 2024 - Maya : hello
+>
+>Fri Jun 28 00:01:33 EDT 2024 - ROBO-MAYA: Hello, Maya! How are you today?
+>
+>Fri Jun 28 00:01:44 EDT 2024 - Maya : goodbye
+>
+>Fri Jun 28 00:01:44 EDT 2024 - ROBO-MAYA: Bye, Maya. Hope to Talk soon
+>
+?Fri Jun 28 00:02:07 EDT 2024 - Maya : whats todays date?
+
+>Fri Jun 28 00:02:07 EDT 2024 - ROBO-MAYA: The current date is Fri Jun 28 00:02:07 EDT 2024
+>
+>Fri Jun 28 00:02:30 EDT 2024 - Maya : who am i?
+>
+>Fri Jun 28 00:02:31 EDT 2024 - ROBO-MAYA: mayasu24
+>
+>Fri Jun 28 00:02:52 EDT 2024 - Maya : whats the weather?
+>
+>Fri Jun 28 00:02:52 EDT 2024 - ROBO-MAYA: Weather report:
+>
 
       \   /     Sunny
        .-.      +29(27) °C
@@ -42,9 +52,13 @@ Fri Jun 28 00:02:52 EDT 2024 - ROBO-MAYA: Weather report:
        `-’      16 km
       /   \     0.0 mm
 
-Fri Jun 28 00:03:18 EDT 2024 - Maya : tell me a joke
-Fri Jun 28 00:03:18 EDT 2024 - ROBO-MAYA: {"type":"general","setup":"Why did the A go to the bathroom and come out as an E?","punchline":"Because he had a vowel movement.","id":319}
-Fri Jun 28 00:06:11 EDT 2024 - Maya : Hey, just a quick note to myself. I want to keep track of this time to log my "lunch" Ill log this again to track when I get back from lunch
-Fri Jun 28 00:06:30 EDT 2024 - Maya : Im back from my lunch. A quick lunch
-Fri Jun 28 00:07:48 EDT 2024 - Maya : Hey, Bob! This is a note for you if this were in a public directory you would have permission to also use this command and add to this chat log! I did make the permissions for this chmod 777 for future implications.
+>Fri Jun 28 00:03:18 EDT 2024 - Maya : tell me a joke
+>
+>Fri Jun 28 00:03:18 EDT 2024 - ROBO-MAYA: {"type":"general","setup":"Why did the A go to the bathroom and come out as an E?","punchline":"Because he had a vowel movement.","id":319}
+>
+>Fri Jun 28 00:06:11 EDT 2024 - Maya : Hey, just a quick note to myself. I want to keep track of this time to log my "lunch" Ill log this again to track when I get back from lunch
+>
+>Fri Jun 28 00:06:30 EDT 2024 - Maya : Im back from my lunch. A quick lunch
+>
+>Fri Jun 28 00:07:48 EDT 2024 - Maya : Hey, Bob! This is a note for you if this were in a public directory you would have permission to also use this command and add to this chat log! I did make the permissions for this chmod 777 for future implications.
 
