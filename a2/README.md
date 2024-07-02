@@ -3,18 +3,18 @@ Command: chat
 
 >The chat command is a mimick of a chatbot. A user an use the chat command to interact with a "bot" that has minimal pre-programmed responses
 
->The "chat bot" spits out a response to certain question or phrase. More responses can be expanded upon. 
+>The "chat bot" spits out a response to certain question or phrase. With more time more responses can be expanded upon. Different variants of the "same" command such as "hi" versus "hello" can also be implimented. 
 
 >The user input and output from this command is sent to a chat.log so you can look back at conversations with chat. 
 
->The chat has some API interative capabilites such as https://wttr.in/?format to get weather information and https://official-joke-api.appspot.com/ to have the chat bot tell you a joke. 
+>The chat has some API interative capabilites such as https://wttr.in/sanjose?0&u to get weather information and https://official-joke-api.appspot.com/ to have the chat bot tell you a joke. This was made possible by these easy and specifc API that dont require tokens and are already in a easy to print format for shell script format. Thhese were found open source on git hub! Thank you to these sources!: https://github.com/chubin and https://github.com/15Dkatz/official_joke_api 
 
 >A cron was set up in crontab to clear the chat.log every 14 days via clear_chat
 >0 0 */14 * * /bin/bash /mnt/scratch/mayasu24/cs131/a2/clear_chat
 
 >This could also be used to write quick notes to yourself that are timestamped if you need to quickly keep track of "sticky note" type messages and when you left those notes
 
->In future iterations of this (with more free permissions) I would make this more public. This would make it  a more "chatroom" type enviroment where other users could also use the chat command and leave messages in a chatroom for a group with timestamps. 
+>In future iterations of this (with more free permissions) I would make this more public. This would make it  a more "chatroom" type enviroment where other users could also use the chat command and leave messages in a chatroom for a group with timestamps. Some downsides to this is it isnt "live" like maybe an AOL messenger would be and needs network connectivity. However, this is a great quick way to leave a message to a team if your collaborating on a project. 
  
 
 2.) Why and when this command is useful 
@@ -33,7 +33,7 @@ I can use this command to get some preprogrammed responses that I might find amu
 >
 >Fri Jun 28 00:01:44 EDT 2024 - ROBO-MAYA: Bye, Maya. Hope to Talk soon
 >
-?Fri Jun 28 00:02:07 EDT 2024 - Maya : whats todays date?
+>Fri Jun 28 00:02:07 EDT 2024 - Maya : whats todays date?
 
 >Fri Jun 28 00:02:07 EDT 2024 - ROBO-MAYA: The current date is Fri Jun 28 00:02:07 EDT 2024
 >
