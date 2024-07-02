@@ -1,6 +1,6 @@
 #!/bin/bash
 
 CHAT_LOG="/mnt/scratch/mayasu24/cs131/a2/chat.log"
-> $CHAT_LOG
+echo ""  > $CHAT_LOG
 
 echo "Chat log has been cleared 

@@ -10,43 +10,40 @@ read MESSAGE
 
 echo "$(date) - $NAME : $MESSAGE" >> $CHATLOG
 
-echo "Message recorded in chat log"
-
-#chat coditionals + ensure the input is somewhat standardized by translating inputfrom upper to lowercase 
-#CITED EXTERNAL SOURCE: https://www.redhat.com/sysadmin/use-curl-api (how I would connect API for things like the weather) 
+#chat coditionals + ensure the input is somewhat standardized by translating inputfrom upper to lowercase
+#CITED EXTERNAL SOURCE: https://www.redhat.com/sysadmin/use-curl-api (how I would connect API for things like the weather)
 #Weather API:  https://wttr.in/:help
 #Joke API: https://official-joke-api.appspot.com/
 
-MESSAGE_FILTERED=$(echo "$MESSAGE" | tr '[:upper:]' '[:lower:]') 
+MESSAGE_FILTERED=$(echo "$MESSAGE" | tr '[:upper:]' '[:lower:]')
 
-if [[ "$MESSAGE_FILTERED" == "hello" ]]; then 
-	CHAT_BOT="Hello, $NAME! How are you today?"
+if [[ "$MESSAGE_FILTERED" == "hello" ]]; then
+        CHAT_BOT="Hello, $NAME! How are you today?"
         echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
 
-elif [[ "$MESSAGE_FILTERED" == "goodbye" ]]; then 
-	CHAT_BOT="Bye, $NAME. Hope to Talk soon"
-	echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+elif [[ "$MESSAGE_FILTERED" == "goodbye" ]]; then
+        CHAT_BOT="Bye, $NAME. Hope to Talk soon"
+        echo "ROBO-MAYA: $CHAT_BOT"
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
 
 elif [[ "$MESSAGE_FILTERED" == "whats todays date?" ]]; then
-	CHAT_BOT="The current date is $(date)"
-	echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+        CHAT_BOT="The current date is $(date)"
+        echo "ROBO-MAYA: $CHAT_BOT"
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
 
-elif [[ "$MESSAGE_FILTERED" == "who am i?" ]]; then 
-	CHAT_BOT="$(whoami)" 
-	echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+elif [[ "$MESSAGE_FILTERED" == "who am i?" ]]; then
+        CHAT_BOT="$(whoami)"
+        echo "ROBO-MAYA: $CHAT_BOT"
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
 
 elif [[ "$MESSAGE_FILTERED" == "whats the weather?" ]]; then
-        CHAT_BOT=$(curl -s "http://wttr.in")
-	echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+        CHAT_BOT=$(curl -s "https://wttr.in/sanjose?0&u")
+        echo "ROBO-MAYA: $CHAT_BOT"
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
 
 elif [[ "$MESSAGE_FILTERED" == "tell me a joke" ]]; then
         CHAT_BOT=$(curl -s "https://official-joke-api.appspot.com/random_joke" )
-	echo "ROBO-MAYA: $CHAT_BOT"
-	echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
-fi 
- 
+        echo "ROBO-MAYA: $CHAT_BOT"
+        echo "$(date) - ROBO-MAYA: $CHAT_BOT" >> $CHATLOG
+fi
