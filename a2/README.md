@@ -17,11 +17,13 @@ Command: chat
 >In future iterations of this (with more free permissions) I would make this more public. This would make it  a more "chatroom" type enviroment where other users could also use the chat command and leave messages in a chatroom for a group with timestamps. Some downsides to this is it isnt "live" like maybe an AOL messenger would be and needs network connectivity. However, this is a great quick way to leave a message to a team if your collaborating on a project. 
  
 
-2.) Why and when this command is useful 
-This command makes getting certain information more "human like" such as date, weather, jokes, greetings, and goodbyes. You can use this command to mimic the GUI you might see in a Windows(cortana) OS. Beyond mimicking a chat bot you can use this a somewhat quick way to keep track of notes that may require a time stamp as all responses are recorded in chat.log.  If this were in a more public directory this can be used as an informal or formal chatroom akin to Slack or AOL instant messenger.
+2.) Why and when this command is useful
+ 
+> It may not be the most "useful" thing in the world, but boy is it entertaining! This command makes getting certain information more "human like" such as date, weather, jokes, greetings, and goodbyes. You can use this command to mimic the GUI you might see in a Windows(cortana) OS. Beyond mimicking a chat bot you can use this a somewhat quick way to keep track of notes that may require a time stamp as all responses are recorded in chat.log.  If this were in a more public directory this can be used as an informal or formal chatroom akin to Slack or AOL instant messenger.
  
 3.) How you can use this command 
-I can use this command to get some preprogrammed responses that I might find amusing or heelpful such as figuring out the weather, the date, or user information. I can write myself notes that are journal like and time stamped. There are also ability to incorpeate more APIs that interest you. Again another way this can be implimented is in a more chatroom like enviroment. 
+
+> I can use this command to get some preprogrammed responses that I might find amusing or heelpful such as figuring out the weather, the date, or user information. I can write myself notes that are journal like and time stamped. There are also ability to incorpeate more APIs that interest you. Again another way this can be implimented is in a more chatroom like enviroment. 
 
 
 4.) Examples (copy/paste results) - I copied pasted from the chat.log (but also all of this is also echoed into the teminal real time) 
