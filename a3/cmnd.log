@@ -1,0 +1,78 @@
+COMMAND LOG  
+#transfer files from IBM to Google Cloud VM 
+scp /mnt/scratch/mayasu24/cs131/a1/taxidata.tar.gz maya_talpai_vasinthascha@35.193.52.133:/home/maya_talpai_vasinthascha/taxidata.tar.gz 
+
+#configure git 
+git clone https://github.com/MayaTalpai/cs131
+git pull origin main 
+
+#set up a3 directory 
+mkdir a3
+mv a3 cs131
+cd cs131
+cd a3
+vim reslts.txt
+vim cmnd.txt
+vim a3.txt
+
+#Show the results of cat /ect/passwd
+
+cat /ect/passwd 
+
+#unzip taxidata.tar.gs and just retrieving data from October files 
+
+tar -xz taxidata.tar.gz taxidata/2019-10.csv
+cd taxidata
+
+#sed Task 
+#1.)Collect the lines with Vendor1.0(vendorid) into the file named "vendor2.csv", using sed....
+
+sed -n '/^1.0,/p' 2019-10.csv >> vendor2.csv
+ 
+#check to see if match is correct
+
+head -10 vendor2.csv
+
+#...Show the results of "wc vendor2.csv" in a3.txt 
+
+wc vendor2.csv >> a3.txt
+
+#2.) Remove all colons(:), double quotes("), and hyphens (-) from the ORIGINAL 2019-10.csv and save it as "no-seperators.csv". ...
+
+vim sub_file  # making a file of a series of sed substitution commands 
+	s/://g #substitute : with a "" and using the flag g to apply globally. repeat for all the other target characters 
+	s/-//g
+	s/"//g
+
+sed -f sub_file 2019-10.csv > no-seperators.csv 
+
+#...Push the result of "head -10 no-seperators.csv" in a3.txt 
+
+head -10 no-seperators.csv >> a3.txt 
+
+#3.)From no-seperators.csv , remove the fractional parts of all numbers. Sav it as "no-fractions.csv".
+sed 's/\.[0-9]*//g no-seperators.csv > no-fractions.csv 
+#want to substitute all the values in the file that have ".<some numbers>". Replace all matches starting with "." (need to escape it so it recognizes it) followed by any number of char. 0 through 9. 
+
+
+#Push the results of "head -10 no-fractions.csv" in a3.txt 
+head -10 no-fractions.csv >> a3.txt
+
+
+#awk Task
+#1.) Using awk, identify the frequency of thee tip amounts from customers who paid more than and equal to $10 of the total amount. Th output file named results.txt should include lines llike "29.4 4" where (the tip amount) and the (frequency count) are seperated by a single space. 
+#	If a customer paid a total amount of $8 this entry does not count towards the frequency 
+#	If the customer paid a total of $11 and tipped $2 , the frequency of the 2$ tip should be increimented by ++ 1
+
+
+# requires a for loop and conditinal statement 
+#field seprator: ",". if total amount is above or equal to 10, add column $14 to a count. Loop though count for every value, print the value and the count. 
+
+awk 'BEGIN { FS: "," } { if $17 >= 10 { count[$14] ++ }} END { for (tip in count) print tip, count[tip] } ' 2019-10.csv > results.txt 
+head -10 results.txt
+
+#2.) Find the 5 most common tips based on the results.txt file. This result should be saved to "a3.txt" by listing the 5 lines in descending order.
+
+awk '{ print $2, $0 }' results.txt | sort -nr | head -5 | cut -d' ' -f2,3 >> a3.txt 
+
+#kind of  a dumb way, but wanted more practice with awk, instead of just using straight sort. 

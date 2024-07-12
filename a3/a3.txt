@@ -1,0 +1,113 @@
+A3.txt - CS131 SU24
+
+0) Show the result of "cat /etc/passwd" to prove that you are on a Google cloud VM 
+COMMAND: cat /ect/passwd
+OUTPUT:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+Debian-exim:x:100:102::/var/spool/exim4:/usr/sbin/nologin
+uuidd:x:101:103::/run/uuidd:/usr/sbin/nologin
+messagebus:x:102:104::/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:997:997:systemd Time Synchronization:/:/usr/sbin/nologin
+systemd-resolve:x:996:996:systemd Resolver:/:/usr/sbin/nologin
+tcpdump:x:103:109::/nonexistent:/usr/sbin/nologin
+sshd:x:104:65534::/run/sshd:/usr/sbin/nologin
+polkitd:x:995:995:polkit:/nonexistent:/usr/sbin/nologin
+maya_talpai_vasinthascha:x:1000:1001::/home/maya_talpai_vasinthascha:/bin/bash
+
+# SED TASK 
+# On the taxi dataset in October 2019,
+1) Collect the lines with Vendor 1.0 (vendorid) into the file named "vendor2.csv", using sed. (You do not need to push this file to the Github repo. Just show the result of "wc vendor2.csv" in a3.txt)
+
+COMMAND: sed -n '/^1.0,/p' 2019-10.csv >> vendor2.csv | wc vendor2.csv >> a3.txt 
+
+OUTPUT:
+  2480661   7441983 312672640 vendor2.csv
+
+2) Remove all colons (:), double quotes ("), and hyphens (-) from the ORIGINAL 2019-10.csv file and save it as "no-separators.csv". (You do not need to push the output with all entries to the Github repo. Just push the result of "head -10 no-separators.csv" in a3.txt)
+COMMAND: 
+vim sub_file 
+	s/:/g
+	s/"//g
+	s/-//g 
+sed -f sub_file 2019-10.csv > no-seperators.csv | head -10 no-seperators.csv >> a3.txt 
+
+OUTPUT: 
+vendorid,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,ratecodeid,store_and_fwd_flag,pulocationid,dolocationid,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
+1.0,20191001 001955.000000,20191001 002357.000000,1.0,0.4,1.0,N,48.0,163.0,2.0,4.5,3.0,0.5,0.0,0.0,0.3,8.3,2.5
+1.0,20191001 004019.000000,20191001 005517.000000,2.0,4.3,1.0,N,144.0,141.0,1.0,14.5,3.0,0.5,2.0,0.0,0.3,20.3,2.5
+1.0,20191001 000652.000000,20191001 002123.000000,1.0,5.0,1.0,N,137.0,80.0,1.0,17.0,3.0,0.5,5.2,0.0,0.3,26.0,2.5
+2.0,20191001 003608.000000,20191001 003615.000000,1.0,0.0,1.0,N,25.0,25.0,4.0,2.5,0.5,0.5,0.0,0.0,0.3,3.8,0.0
+2.0,20191001 003608.000000,20191001 003615.000000,1.0,0.0,1.0,N,25.0,25.0,2.0,2.5,0.5,0.5,0.0,0.0,0.3,3.8,0.0
+2.0,20191001 002015.000000,20191001 002029.000000,1.0,0.0,1.0,N,193.0,193.0,1.0,2.5,0.5,0.5,0.0,0.0,0.3,3.8,0.0
+2.0,20191001 002241.000000,20191001 002248.000000,1.0,0.0,1.0,N,193.0,193.0,2.0,2.5,0.5,0.5,0.0,0.0,0.3,3.8,0.0
+2.0,20191001 002314.000000,20191001 002318.000000,1.0,0.0,1.0,N,193.0,193.0,2.0,2.5,0.5,0.5,0.0,0.0,0.3,3.8,0.0
+1.0,20191001 000300.000000,20191001 001337.000000,3.0,2.2,1.0,N,163.0,239.0,1.0,10.5,3.0,0.5,2.85,0.0,0.3,17.15,2.5
+
+
+3) From no-separators.csv, remove the fractional parts of all numbers. Save it as "no-fractions.csv". (You do not need to push the output with all entries to the Github repo. Just show the result of "head -10 no-fractions.csv" in a3.txt)
+
+COMMAND: sed 's/\.[0-9]*//g' 2019-10.csv > no-fractions.csv | head -10 no-fractions.csv 
+
+OUTPUT: 
+vendorid,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,ratecodeid,store_and_fwd_flag,pulocationid,dolocationid,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
+1,20191001 001955,20191001 002357,1,0,1,N,48,163,2,4,3,0,0,0,0,8,2
+1,20191001 004019,20191001 005517,2,4,1,N,144,141,1,14,3,0,2,0,0,20,2
+1,20191001 000652,20191001 002123,1,5,1,N,137,80,1,17,3,0,5,0,0,26,2
+2,20191001 003608,20191001 003615,1,0,1,N,25,25,4,2,0,0,0,0,0,3,0
+2,20191001 003608,20191001 003615,1,0,1,N,25,25,2,2,0,0,0,0,0,3,0
+2,20191001 002015,20191001 002029,1,0,1,N,193,193,1,2,0,0,0,0,0,3,0
+2,20191001 002241,20191001 002248,1,0,1,N,193,193,2,2,0,0,0,0,0,3,0
+2,20191001 002314,20191001 002318,1,0,1,N,193,193,2,2,0,0,0,0,0,3,0
+1,20191001 000300,20191001 001337,3,2,1,N,163,239,1,10,3,0,2,0,0,17,2
+
+#AWK TASK 
+On the taxi dataset in October 2019,
+
+4) Using awk, identify the frequency of the tip amounts from the customers who paid more than and equal to $10.0 of the total amount. The output file named "results.txt" should include lines like "29.46 4", where (the tip amount) and (the frequency count) are separated by a single space.
+
+If a customer paid a total amount of $8.0, for example, this entry does not count toward the frequency. 
+If a customer paid a total amount of $11.0 and tipped $2.0, for example, the frequency of the $2.0 tip should be incremented by 1.
+
+COMMAND: awk 'BEGIN { if $17 >= 10.0 { count[$14] ++ }} END { for (tips in count) print tips, count[tips] }' 2019-10.csv > results.txt | head -10 results.txt 
+
+OUTPUT:
+5.28 221
+2.65 29294
+20.16 63
+34.66 4
+25.86 6
+23.97 1
+22.03 3
+73.45 1
+2.79 6229
+9.45 1136
+
+5.) Find the 5 most common tips based on the results.txt file. This result should be saved to "a3.txt" by listing the 5 lines in descending order.
+
+COMMAND: awk '{ print $2 , $0 } ' results.txt | sort -nr | head -5 | cut -d' ' -f2,3 >> a3.txt 
+(kind of a dumb way, but used awk to make the frequency the first colummn and the rest of the line the second column, sorted from big --> smallest frequency, got the top 5 results, cut from the second column to the third to get back to the original format, and redirected output to a3.txt)  
+
+OUTPUT: 
+0.0 1580916
+1.0 307007
+2.0 265452
+1.5 91442
+2.06 90682

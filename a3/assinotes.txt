@@ -1,0 +1,125 @@
+NOTES- A3 CS131 SU24 
+0.) Preperation Task - Show the result of "cat/etc/passwd" to prove you are on the Google Cloud VM 
+
+	cat /ect/passwd 
+	cat /ect/passwd >> results.txt  #appending the results file with output from cmnd. 
+
+sed Task 
+On taxi dataset in October 2019
+ ***have to transfer data from IBM to Google Cloud. SSH from Google Cloud VM to IBM to scp the taxi data set. (secure copy) 
+
+	scp /mnt/scratch/mayasu24/cs131/a1/taxidata.tar.gz maya_talpai_vasinthascha@<external IP adress from cloud (ephemeral)>:home/maya_talpai_vasinthascha/taxi.tar.gz
+
+COMMON sed TASK: 
+	1.) substitute: 's/pattern/replacement/flags
+	2.) print: sed -n '/pattern/p' file 
+		prints lines matching the patterns like grep. Can use reg ex here too
+	3.) delete: sed '/pattern/d' file 
+		deletes lins matching this file
+	4.) insert: sed '/pattern/i\new line' file
+		inserts "new line" BEFORE lines matching the pattern 
+	5.) append: sed '/pattern/a\new line' file 
+		inserts "new line: AFTER lines matching the pattern 
+	6.) transform: sed 'y/abc/ABC/' file 
+		changes a to A, b to B, and c to C 
+	7.) Specify line numbers or a range of numbers 
+		sed '1-5d' file 
+			deletes lines 1-5 
+	8.) Pattern selection range
+		sed  '/pattern1/, /pattern2/d' file
+			deletes lines starting from pattern1 to pattern2 
+	9.) In place editing 
+		sed i.[suffix] 's/foo/bar/g' file 
+			suffix -.bak = edits the file in place and makes a backup with .bak extension 
+	10.) File as input 
+		yyou can have a whole file as input for sed to do a series of commands 
+		sed -f script_sed file
+
+
+1.) Collect the lines with Vendor1.0 (vendroid) into a file named "vendor2.csv", using sed. (You do not need to push this file to GitHub repo.
+
+# SYNTAX:  sed [options] [command] [filename] : 
+#sed -n (prevents all display of input--> output lines)
+#'/^1.0,/p' /pattern is regular expression. I want just the first column to be matched so ^ = beginning of the line, 1.0, = 1.0 in the first column. Print the output into the vendor2.csv file. 
+ 
+	sed -n '/^1.0,/p' 2019-10.csv >> vendor2.csv 
+***NOTE:
+	-n surpresses  automatic printing of pattern space 
+	-e allows for multiple commands to be executed 
+
+
+2.) Remove all colons (:), double quotes(") and hyphens (-) from the ORIGINAL 2019-10.csv and save as "no-seperators.csv"
+One way I can do this is all at once. important to note that the flag at the end "g" means globally so it will substitute all occurance of pattern matches and not just the first one. 
+ 
+	sed s/[:"-]//g 2019-10.csv 
+
+I can also create a file that has the multiple commands and call on sed -f to do all the substitutions one after the other 
+
+	$ cat sub_file 
+		s/://g
+		s/"//g
+		s/-//g  
+	
+	sed -f sub_file 2019-20.csv 
+
+***NOTE: other common flags you can use at the end of sed and have used before: 
+	"g" - global 
+	"p" - print 
+	"i" - case insensitive matching 
+
+3.) From no-seperators.csv, remove the fransctional parts of all the numbers. Save it as "no-fractions.csv" 
+Again, I could use a substitution script to sunbstitute all the numbers with a "." * and so on with the sed /s substitution script
+
+	sed 's/\.[0-9]*//g
+substitute a (need to esacpe with \ to get .) .[any number 0-9] any number of times with a "" and do it globally. 
+
+***NOTE [0,9] would match 0 OR 9. 
+
+AWK NOTES 
+SYNTAX:
+awk ' pattern { action } ' file 
+example: awk '/pattern/ { print }' file
+
+
+FIELD SEP: 
+Default field seperator is white space or tabs 
+-F seperator
+awk -F, '{ print $1, $2 }' file
+
+' BEGIN { FS = "," }  
+
+' BEGIN { action }: Actions to be performed before processing input.
+' END { action }: Actions to be performed after processing input.
+
+ACTIONS: 
+print: Outputs text.
+print $1: Prints the first field
+print $1, $2: Prints the first and second fields separated by a space.
+
+Built IN VARIABLES:
+	FS: Field separator.
+	OFS: Output field separator.
+	RS: Record separator.
+	ORS: Output record separator.
+
+CONDITIONALS:
+{ if (condition) { action }}: Conditional statements.
+{ if (condition) { action } else { action }} : If-else statements.	
+
+awk '$3 > 100 { print $1, $2 }' file
+
+
+
+LOOPS:
+
+{ for (i=1; i<= 4; i++) { action }}: Loop through fields.
+{ while (condition) { action }}: While loops.
+
+ARRAYS:
+
+{ array[index] = value }: Associative arrays.
+{ for (i in array) { print i, array[i] }}: Loop through array elements
+
+FUNCTIONS:
+{ function name(args) { action }}: User-defined functions.
+Theres also Built-in functions (see manual/slides) 
