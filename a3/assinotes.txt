@@ -1,4 +1,4 @@
-NOTES- A3 CS131 SU24 
+ASSIGNMENT NOTES- A3 CS131 SU24 - FOR MYSELF 
 0.) Preperation Task - Show the result of "cat/etc/passwd" to prove you are on the Google Cloud VM 
 
 	cat /ect/passwd 
