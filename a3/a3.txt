@@ -1,7 +1,9 @@
 A3.txt - CS131 SU24
 
 0) Show the result of "cat /etc/passwd" to prove that you are on a Google cloud VM 
+
 COMMAND: cat /ect/passwd
+
 OUTPUT:
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -44,7 +46,7 @@ OUTPUT:
 2) Remove all colons (:), double quotes ("), and hyphens (-) from the ORIGINAL 2019-10.csv file and save it as "no-separators.csv". (You do not need to push the output with all entries to the Github repo. Just push the result of "head -10 no-separators.csv" in a3.txt)
 COMMAND: 
 vim sub_file 
-	s/:/g
+	s/://g
 	s/"//g
 	s/-//g 
 sed -f sub_file 2019-10.csv > no-seperators.csv | head -10 no-seperators.csv >> a3.txt 
@@ -103,6 +105,7 @@ OUTPUT:
 5.) Find the 5 most common tips based on the results.txt file. This result should be saved to "a3.txt" by listing the 5 lines in descending order.
 
 COMMAND: awk '{ print $2 , $0 } ' results.txt | sort -nr | head -5 | cut -d' ' -f2,3 >> a3.txt 
+
 (kind of a dumb way, but used awk to make the frequency the first colummn and the rest of the line the second column, sorted from big --> smallest frequency, got the top 5 results, cut from the second column to the third to get back to the original format, and redirected output to a3.txt)  
 
 OUTPUT: 
